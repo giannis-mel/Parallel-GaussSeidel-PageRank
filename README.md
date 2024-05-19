@@ -30,29 +30,27 @@ For the exercise data, the __hollins.dat__ file was used. It contains the number
 
 Initially, the number of nodes and connections is stored, and then an array of strings with the names of the websites is created (for printing after executing PageRank). Then, an `n x n` matrix `S` is created, where a 1 is placed when page `i` has an outlink to page `j`. This matrix is called the adjacency matrix and is the basis of the PageRank algorithm.
 
-
-
 ## PageRank Algorithm
 
 The PageRank algorithm primarily used source __[3]__ in combination with __[4]__. Below are the steps taken:
 
 __Dangling Pages:__ After creating the `S` (adjacency) matrix, dangling nodes (websites with no outlinks) must be managed. It is assumed that a random user reaching such a page will go equally likely to any other website in the dataset. Therefore, an `outlinks[n]` vector is created to store the number of outlinks each website has. Using the formula from __[3]__, the S matrix is made stochastic (row-wise). For dangling pages, `1/n` is placed in the entire row of `S`. Finally, the `S` matrix is transposed to `St` to be stochastic column-wise.
 
-![S](https://github.com/giannis-mel/Parallel-GaussSeidel-PageRank/blob/main/pics/S.png)
+<img src="pics/S.png" alt="S" width="600" />
 
 __Teleportation:__ To fully define the optimal website problem, consider that a user can type the website address directly without using any outlink. Thus, the variable `d` (provided by the user) is defined according to the formula:
 
-![G](https://github.com/giannis-mel/Parallel-GaussSeidel-PageRank/blob/main/pics/G.png)
+<img src="pics/G.png" alt="G" width="600" />
 
 where `T` is a vector where all values are the equal probability `1/n`. The `G` matrix is not created at this stage since the goal is to define the problem `Ax = b` as in Chapter 5.1 (source __[3]__).
 
 __Definition of Ax = b:__ According to the sources, 
 
-![A](https://github.com/giannis-mel/Parallel-GaussSeidel-PageRank/blob/main/pics/A.png) 
+<img src="pics/A.png" alt="A" width="600" />
 
 and
 
-![b](https://github.com/giannis-mel/Parallel-GaussSeidel-PageRank/blob/main/pics/b.png) 
+<img src="pics/b.png" alt="b" width="600" />
 
 are implemented in the code. The Gauss-Seidel algorithm is then iteratively executed on the system Ax = b to find its solutions.
 ## Gauss-Seidel Algorithm
@@ -69,7 +67,8 @@ Exiting the `while` loop, the final scores for each website are stored in the `p
 
 The formula used in the Gauss-Seidel method is:
 
-![b](https://github.com/giannis-mel/Parallel-GaussSeidel-PageRank/blob/main/pics/gausseidel.png) 
+<img src="pics/gausseidel.png" alt="Gaus-Seidel" width="600" />
+
 ## Verify Results
 
 After completing the Gauss-Seidel algorithm, I used the Bubble Sort algorithm to sort the websites in descending order. The final results were printed from the `websites` array along with the PageRank of each website. 
@@ -78,11 +77,11 @@ The correctness of the results was verified by comparing them with Appendix B of
 
 For reference, the source __[4]__ results are shown above, and the results of my code for `d = 0.75` are shown below:
 
-![Verification](https://github.com/giannis-mel/Parallel-GaussSeidel-PageRank/blob/main/pics/verification.png)
+<img src="pics/verification.png" alt="Verification" width="600"/>
 
 Below is a helpful graph of iterations with respect to dumping factor:
 
-![iterations](https://github.com/giannis-mel/Parallel-GaussSeidel-PageRank/blob/main/pics/iterations.png)
+<img src="pics/iterations.png" alt="Iterations" width="600"/>
 
 ## References
 
