@@ -75,8 +75,6 @@ After completing the Gauss-Seidel algorithm, I used the Bubble Sort algorithm to
 
 The correctness of the results was verified by comparing them with Appendix B of source __[4]__. Both the PageRank values and the positions of the top websites were confirmed. Some minor differences in website names were observed, but these did not affect their ranking or PageRank values. Therefore, I believe the algorithm is correct, with minor discrepancies due to differences in the two datasets used, which are based on real data. 
 
-For reference, the source __[4]__ results are shown above, and the results of my code for `d = 0.75` are shown below:
-
 <img src="pics/verification.png" alt="Verification" width="600"/>
 
 Below is a helpful graph of iterations with respect to dumping factor:
